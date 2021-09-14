@@ -11,15 +11,15 @@ class Solution:
                 res = tmp
         return res
         
-    def helper(self, s, j,k):
-        
-        while j > 0 and k < len(s)-1 and s[j] == s[k]:
+    def helper(self, s, j,k):        
+        while j >= 0 and k < len(s) and s[j] == s[k]:
             j = j - 1
             k = k + 1
         j += 1
         k -= 1
         
         return s[j:k+1]
+    
     
                 
             
