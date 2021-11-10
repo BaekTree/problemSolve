@@ -1,3 +1,6 @@
+# 문제 풀고 나서 discussion을 다시 보니... log을 쓸 생각을 못했다. log 써서 정수가 나오면 2의 제곱으로 이루어진 것. log2을 하고 log2에 floor을 각각해서 값이 같으면 정수인 것이다. 
+# 그래서 만약 2의 제곱으로 만들졌으면 2로 나눠서 n 업데이트
+# 2의 제곱이 아니면 log2 값에 floor 한 값에 다시 2곱한 값이 lowest next 2의 제곱 수이므로... n - 이 값이 새로운 n이 된다.
 #https://www.hackerrank.com/challenges/one-month-preparation-kit-counter-game/problem?h_l=interview&isFullScreen=true&playlist_slugs%5B%5D=preparation-kits&playlist_slugs%5B%5D=one-month-preparation-kit&playlist_slugs%5B%5D=one-month-week-two
 #!/bin/python3
 
