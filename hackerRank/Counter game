@@ -1,0 +1,75 @@
+#https://www.hackerrank.com/challenges/one-month-preparation-kit-counter-game/problem?h_l=interview&isFullScreen=true&playlist_slugs%5B%5D=preparation-kits&playlist_slugs%5B%5D=one-month-preparation-kit&playlist_slugs%5B%5D=one-month-week-two
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'counterGame' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts LONG_INTEGER n as parameter.
+#
+# from collections import set
+from bisect import bisect_left
+def counterGame(n):
+    # Write your code here
+    # Check if given number is power of 2.
+    # if so, divide it by 2 and pass the number to the other player
+    # else, find the next low number which is the power of 2. Subtract them and pass the number to the other player.
+    # 10:25
+    # if N == 1, Richard winds.
+    # if given number from the other player is 2, the other player wins.
+    
+    # create a dict which contains the power of 2. 
+    # 
+    
+    two_powers_dict = {}
+    two_powers_list = []
+    v = 1
+    for i in range(63):
+        v = v * 2
+        two_powers_dict[v] = i
+        two_powers_list.append(v)
+    
+    # True for L, False for R.
+    # print(two_powers_dict)
+    turn = False
+    while True:
+        turn = not turn
+
+        if n in two_powers_dict:
+            n = n // 2
+        else:
+            next_two_pow_idx = bisect_left(two_powers_list, n)
+            # print("idx: ", next_two_pow_idx)
+            # print("val: ", two_powers_list[next_two_pow_idx-1])
+            n = n - two_powers_list[next_two_pow_idx-1]
+        
+        # print("Louise" if turn else "Richard")
+        # print(n)        
+        
+        
+        if n == 1:
+            break
+        
+        # print(turn)
+    # print(str(turn))
+    return "Louise" if turn else "Richard"  
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input().strip())
+
+    for t_itr in range(t):
+        n = int(input().strip())
+
+        result = counterGame(n)
+
+        fptr.write(result + '\n')
+
+    fptr.close()
